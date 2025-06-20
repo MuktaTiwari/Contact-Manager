@@ -1,0 +1,28 @@
+{
+  "contacts": [
+    {
+      "id": 1,
+      "name": "Manimukta Tiwari",
+      "email": "mukta203@gmail.com",
+      "phone": "8890567898",
+      "address": "123 Main St",
+      "favourite": true
+    },
+    {
+      "id": 2,
+      "name": "Pooja Tiwari",
+      "email": "pooja@gmail.com",
+      "phone": "2345678901",
+      "address": "456 Oak Ave",
+      "favourite": false
+    },
+    {
+      "id": 3,
+      "name": "Krishna Tiwari",
+      "email": "krishna@gmail.com",
+      "phone": "3456789012",
+      "address": "789 Pine Rd",
+      "favourite": true
+    }
+  ]
+}
