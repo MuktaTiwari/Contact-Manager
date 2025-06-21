@@ -11,6 +11,7 @@ server.get('/api/contacts', (req, res) => {
   const db = router.db.getState();
   let contacts = db.contacts;
 
+
   // Search filter
   if (req.query.search) {
     contacts = contacts.filter(contact => 
@@ -37,10 +38,12 @@ server.get('/api/contacts', (req, res) => {
     totalPages: Math.ceil(contacts.length / limit)
   };
 
+
   res.jsonp(results);
 });
 
 // Prefix all routes with /api
+
 server.use('/api', router);
 
 const PORT = 3001;

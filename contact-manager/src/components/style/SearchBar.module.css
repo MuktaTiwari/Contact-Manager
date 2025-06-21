@@ -1,0 +1,28 @@
+.searchBar {
+  width: 100%;
+}
+
+.searchInput {
+  width: 100%;
+}
+
+.searchInput .MuiOutlinedInput-root {
+  height: 36px;
+  border-radius: 20px;
+  background-color: rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.searchInput .MuiOutlinedInput-root:hover {
+  background-color: rgba(0, 0, 0, 0.08);
+}
+
+.searchInput .MuiOutlinedInput-root.Mui-focused {
+  background-color: #fff;
+  box-shadow: 0 0 0 2px rgba(74, 107, 255, 0.2);
+}
+
+.searchInput .MuiOutlinedInput-input {
+  padding: 8px 12px;
+  font-size: 0.875rem;
+}

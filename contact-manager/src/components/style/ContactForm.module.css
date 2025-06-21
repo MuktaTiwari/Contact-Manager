@@ -1,0 +1,117 @@
+/* Form Container */
+.formContainer {
+  padding: 24px;
+  animation: fadeIn 0.4s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Form Stack */
+.formStack {
+  margin-top: 8px;
+}
+
+/* Error Alert */
+.errorAlert {
+  margin-bottom: 16px;
+  animation: shake 0.5s ease;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-5px); }
+  40%, 80% { transform: translateX(5px); }
+}
+
+/* Text Fields */
+.textField {
+  width: 100%;
+  margin-bottom: 16px;
+  transition: all 0.3s ease;
+}
+
+.textField .MuiOutlinedInput-root {
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.textField .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
+  border-color: #4a6bff;
+}
+
+.textField .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+  border-color: #4a6bff;
+  box-shadow: 0 0 0 2px rgba(74, 107, 255, 0.2);
+}
+
+/* Input Adornments */
+.inputAdornment {
+  color: #4a6bff !important;
+}
+
+/* Address Field */
+.addressField textarea {
+  min-height: 80px !important;
+  resize: vertical;
+}
+
+/* Favorite Checkbox */
+.favoriteCheckbox {
+  margin-left: -11px;
+  color: #4a6bff !important;
+}
+
+.favoriteLabel {
+  color: rgba(0, 0, 0, 0.8);
+  font-weight: 500;
+}
+
+/* Submit Button */
+.submitButton {
+  margin-top: 24px !important;
+  padding: 12px 0 !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.5px !important;
+  text-transform: none !important;
+  border-radius: 12px !important;
+  background: linear-gradient(45deg, #4a6bff 30%, #ff6b6b 90%) !important;
+  color: white !important;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1) !important;
+  transition: all 0.3s ease !important;
+}
+
+.submitButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15) !important;
+}
+
+.submitButton:active {
+  transform: translateY(0);
+}
+
+.submitButton.Mui-disabled {
+  background: rgba(0, 0, 0, 0.1) !important;
+  color: rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Form Field Animation */
+.formField {
+  animation: slideIn 0.5s ease forwards;
+  opacity: 0;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* Create staggered animations for each field */
+.formField:nth-child(1) { animation-delay: 0.1s; }
+.formField:nth-child(2) { animation-delay: 0.2s; }
+.formField:nth-child(3) { animation-delay: 0.3s; }
+.formField:nth-child(4) { animation-delay: 0.4s; }
+.formField:nth-child(5) { animation-delay: 0.5s; }
+.formField:nth-child(6) { animation-delay: 0.6s; }
