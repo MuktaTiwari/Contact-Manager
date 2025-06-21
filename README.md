@@ -68,19 +68,21 @@ A modern contact management application built with React, TypeScript, and Materi
 ## Installation
 
 ## Clone repository
-git clone https://github.com/yourusername/contact-manager.git
-cd contact-manager
+- git clone https://github.com/yourusername/contact-manager.git
+- cd contact-manager
 
 ## Install dependencies
 npm install
 
 # Start development servers
-npm run dev       # Frontend (port 5173)
-npm run server    # Mock API (port 3001)
+- npm run dev       # Frontend (port 5173)
+- pm run server    # Mock API (port 3001)
 
 
 ###  Open your browser to http://localhost:5173
-contact-manager/
+
+
+## contact-manager/
 ├── backend/                  # Node.js server
 │   ├── node_modules/
 │   ├── db.json               # Mock data (dev only)
