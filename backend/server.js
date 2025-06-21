@@ -6,10 +6,11 @@ const middlewares = jsonServer.defaults();
 server.use(middlewares);
 server.use(jsonServer.bodyParser);
 
-// Custom endpoint for filtered & paginated contacts
+// Add custom routes before JSON Server router
 server.get('/api/contacts', (req, res) => {
   const db = router.db.getState();
-  let contacts = db.contacts || [];
+  let contacts = db.contacts;
+
 
   // Search filter
   if (req.query.search) {
@@ -37,10 +38,12 @@ server.get('/api/contacts', (req, res) => {
     totalPages: Math.ceil(contacts.length / limit)
   };
 
-  res.json(results); // Use res.json instead of res.jsonp unless needed
+
+  res.jsonp(results);
 });
 
-// Mount JSON Server routes under /api
+// Prefix all routes with /api
+
 server.use('/api', router);
 
 const PORT = 3001;
