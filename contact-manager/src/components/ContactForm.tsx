@@ -8,28 +8,34 @@ import {
   DialogContent,
   InputAdornment,
   Alert,
-  Box
+  Box,
+  IconButton
 } from '@mui/material';
 import { 
   Person, 
   Email, 
   Phone, 
   LocationOn,
-  Favorite
+  Favorite,
+  Close
 } from '@mui/icons-material';
 import type { ContactFormValues } from '../types/contact';
 import { useCreateContact, useUpdateContact } from '../api/contacts';
 import styles from '../components/style/ContactForm.module.css';
 
+interface ContactFormProps {
+  defaultValues?: ContactFormValues;
+  onSuccess: () => void;
+  onClose: () => void;
+  mode?: 'create' | 'edit';
+}
+
 const ContactForm = ({ 
   defaultValues, 
   onSuccess,
+  onClose,
   mode = 'create'
-}: {
-  defaultValues?: ContactFormValues;
-  onSuccess: () => void;
-  mode?: 'create' | 'edit';
-}) => {
+}: ContactFormProps) => {
   const { 
     register, 
     handleSubmit, 

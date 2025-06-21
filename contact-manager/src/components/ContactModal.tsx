@@ -1,11 +1,12 @@
-import { 
-  Dialog, 
-  DialogTitle, 
-  DialogContent, 
-  DialogActions, 
+import {
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
   Button,
   Box,
-  Typography
+  Typography,
+  IconButton
 } from '@mui/material';
 import { useContactStore } from '../stores/contactStore';
 import { useQuery } from '@tanstack/react-query';
@@ -14,10 +15,11 @@ import ContactForm from './ContactForm';
 import { useDeleteContact } from '../api/contacts';
 import type { Contact } from '../types/contact';
 import styles from '../components/style/ContactModal.module.css';
+import { Close } from '@mui/icons-material';
 
-const ContactModal = ({ 
-  open, 
-  onClose, 
+const ContactModal = ({
+  open,
+  onClose,
   contact,
   mode = 'view'
 }: {
@@ -28,7 +30,7 @@ const ContactModal = ({
 }) => {
   const { selectedContactId, setSelectedContactId } = useContactStore();
   const deleteMutation = useDeleteContact();
-  
+
   const { data: contactData } = useQuery({
     queryKey: ['contact', selectedContactId],
     queryFn: () => fetchContactById(selectedContactId!),
@@ -55,17 +57,17 @@ const ContactModal = ({
             <Typography variant="h6" className={styles.contactName}>
               {contactData?.name}
             </Typography>
-            
+
             <Box className={styles.detailRow}>
               <Typography component="span" className={styles.detailLabel}>Email:</Typography>
               <Typography className={styles.detailValue}>{contactData?.email}</Typography>
             </Box>
-            
+
             <Box className={styles.detailRow}>
               <Typography component="span" className={styles.detailLabel}>Phone:</Typography>
               <Typography className={styles.detailValue}>{contactData?.phone}</Typography>
             </Box>
-            
+
             <Box className={styles.detailRow}>
               <Typography component="span" className={styles.detailLabel}>Address:</Typography>
               <Typography className={styles.detailValue}>{contactData?.address}</Typography>
@@ -73,7 +75,7 @@ const ContactModal = ({
           </Box>
         </DialogContent>
         <DialogActions className={styles.dialogActions}>
-          <Button 
+          <Button
             variant="contained"
             color="error"
             className={styles.deleteButton}
@@ -86,7 +88,7 @@ const ContactModal = ({
           >
             {deleteMutation.isPending ? 'Deleting...' : 'Delete'}
           </Button>
-          <Button 
+          <Button
             variant="outlined"
             className={styles.closeButton}
             onClick={onClose}
@@ -98,18 +100,31 @@ const ContactModal = ({
     );
   }
 
-  return (
-    <Dialog open={open} onClose={onClose} maxWidth="sm" fullWidth>
-      <DialogTitle>{mode === 'create' ? 'Add New Contact' : 'Edit Contact'}</DialogTitle>
-      <DialogContent className={styles.dialogContent}>
-        <ContactForm 
-          defaultValues={contact} 
-          onSuccess={onClose} 
-          mode={mode}
-        />
-      </DialogContent>
-    </Dialog>
-  );
+return (
+  <Dialog open={open} onClose={onClose} maxWidth="sm" fullWidth>
+    <div className={styles.dialogHeader}>
+      <DialogTitle className={styles.dialogTitle}>
+        {mode === 'create' ? 'Add New Contact' : 'Edit Contact'}
+      </DialogTitle>
+      <IconButton 
+        aria-label="close" 
+        onClick={onClose}
+        className={styles.closeButton}
+      >
+        <Close />
+      </IconButton>
+    </div>
+    
+    <DialogContent className={styles.dialogContent}>
+      <ContactForm
+        defaultValues={contact}
+        onSuccess={onClose}
+        mode={mode}
+        onClose={onClose}
+      />
+    </DialogContent>
+  </Dialog>
+);
 };
 
 export default ContactModal;

@@ -44,7 +44,9 @@ const ContactList = () => {
       position: 'relative',
       width: '100%',
       maxWidth: '100vw',
-      overflowX: 'hidden'
+      overflow: 'hidden', // Disable scrolling
+      minHeight: 'calc(100vh - 64px)', // Subtract header height
+      paddingBottom: '80px' // Make space for fixed pagination
     }}>
       {isLoading ? (
         <Box className={styles.gridContainer}>
@@ -64,7 +66,7 @@ const ContactList = () => {
           flexDirection: 'column', 
           alignItems: 'center', 
           justifyContent: 'center', 
-          minHeight: '60vh',
+          height: 'calc(100vh - 144px)', // Adjusted for header and pagination
           textAlign: 'center',
           p: 3
         }}>
@@ -76,27 +78,26 @@ const ContactList = () => {
           </Typography>
         </Box>
       ) : (
-        <>
-          <Box className={styles.gridContainer}>
-            {contacts.map((contact: Contact) => (
-              <ContactCard key={contact.id} contact={contact} />
-            ))}
-          </Box>
-          
-          {totalPages > 1 && (
-            <Box className={styles.pagination}>
-              <Pagination
-                count={totalPages}
-                page={page}
-                onChange={handlePageChange}
-                color="primary"
-                shape="rounded"
-                size="large"
-                disabled={isFetching}
-              />
-            </Box>
-          )}
-        </>
+        <Box className={styles.gridContainer}>
+          {contacts.map((contact: Contact) => (
+            <ContactCard key={contact.id} contact={contact} />
+          ))}
+        </Box>
+      )}
+
+      {/* Fixed Pagination */}
+      {totalPages > 1 && (
+        <Box className={styles.fixedPagination}>
+          <Pagination
+            count={totalPages}
+            page={page}
+            onChange={handlePageChange}
+            color="primary"
+            shape="rounded"
+            size="large"
+            disabled={isFetching}
+          />
+        </Box>
       )}
 
       <Fab
@@ -105,7 +106,7 @@ const ContactList = () => {
         onClick={() => setAddModalOpen(true)}
         sx={{
           position: 'fixed',
-          bottom: 32,
+          bottom: 80, // Adjusted to appear above pagination
           right: 32,
           width: 56,
           height: 56,
@@ -116,6 +117,7 @@ const ContactList = () => {
             transform: 'scale(1.1)',
           },
           transition: 'all 0.2s ease',
+          zIndex: 1001 // Above pagination
         }}
       >
         <Add />
