@@ -25,14 +25,6 @@
       "favourite": true
     },
     {
-      "name": "yogesh",
-      "email": "wrw@gmail.com",
-      "phone": "9898989899",
-      "address": "ergr",
-      "favourite": true,
-      "id": 4
-    },
-    {
       "name": "jnfew",
       "email": "wekjfh@gmail.com",
       "phone": "9897987989",
@@ -87,6 +79,14 @@
       "address": "asda",
       "favourite": false,
       "id": 11
+    },
+    {
+      "name": "kdnajk",
+      "email": "fjbs@gmail.com",
+      "phone": "8797996676",
+      "address": "uygd",
+      "favourite": true,
+      "id": 12
     }
   ]
 }
