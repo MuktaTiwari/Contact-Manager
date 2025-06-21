@@ -54,3 +54,21 @@
     margin-bottom: 4px;
   }
 }
+
+
+.dialogHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+}
+
+.dialogTitle {
+  padding: 0;
+  margin: 0;
+  flex: 1;
+}
+
+.closeButton {
+  margin-left: auto;
+}
