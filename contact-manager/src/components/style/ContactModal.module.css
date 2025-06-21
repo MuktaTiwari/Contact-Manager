@@ -1,0 +1,56 @@
+.dialogContent {
+  padding: 16px !important;
+}
+
+.contactDetailContainer {
+  padding: 16px;
+}
+
+.contactName {
+  margin-bottom: 24px !important;
+  font-weight: 600 !important;
+}
+
+.detailRow {
+  margin-bottom: 16px !important;
+  display: flex !important;
+  align-items: flex-start !important;
+}
+
+.detailLabel {
+  font-weight: 600 !important;
+  margin-right: 8px !important;
+  min-width: 70px !important;
+}
+
+.detailValue {
+  flex: 1 !important;
+}
+
+.dialogActions {
+  padding: 16px 24px !important;
+  justify-content: space-between !important;
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.deleteButton {
+  margin-right: auto !important;
+  text-transform: none !important;
+  border-radius: 8px !important;
+}
+
+.closeButton {
+  margin-left: auto !important;
+  text-transform: none !important;
+  border-radius: 8px !important;
+}
+
+@media (max-width: 600px) {
+  .detailRow {
+    flex-direction: column;
+  }
+  
+  .detailLabel {
+    margin-bottom: 4px;
+  }
+}

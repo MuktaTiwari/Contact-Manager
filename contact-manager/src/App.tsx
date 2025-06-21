@@ -1,13 +1,16 @@
-import { CssBaseline, ThemeProvider } from '@mui/material';
+import { ThemeProvider } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
+import AppLayout from './components/AppLayout';
+import ContactList from './components/ContactList';
+import { theme } from './utils/theme';
 
-import {theme} from './utils/theme'
 function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <div>
-        <h1>Contact Manager</h1>
-      </div>
+      <AppLayout>
+        <ContactList />
+      </AppLayout>
     </ThemeProvider>
   );
 }

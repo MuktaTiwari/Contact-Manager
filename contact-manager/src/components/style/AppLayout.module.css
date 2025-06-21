@@ -1,0 +1,126 @@
+.layoutContainer {
+  display: flex;
+  min-height: 100vh;
+}
+
+.appBar {
+  width: calc(100% - 240px);
+  margin-left: 240px;
+  transition: all 0.3s ease;
+  box-shadow: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+@media (max-width: 900px) {
+  .appBar {
+    width: 100%;
+    margin-left: 0;
+  }
+}
+
+.mainContent {
+  flex-grow: 1;
+  padding: 24px;
+  width: calc(100% - 240px);
+  background-color: #f5f7ff;
+  margin-top: 64px; /* Fixed toolbar height */
+}
+
+@media (max-width: 900px) {
+  .mainContent {
+    width: 100%;
+  }
+}
+
+.drawerPaper {
+  width: 240px;
+  border-right: none !important;
+}
+
+.menuButton {
+  margin-right: 16px;
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .menuButton {
+    display: block;
+  }
+}
+
+.navContainer {
+  width: 240px;
+  flex-shrink: 0;
+}
+
+.temporaryDrawer {
+  display: block;
+}
+
+@media (min-width: 900px) {
+  .temporaryDrawer {
+    display: none;
+  }
+}
+
+.permanentDrawer {
+  display: none;
+}
+
+@media (min-width: 900px) {
+  .permanentDrawer {
+    display: block;
+  }
+}
+
+.toolbar {
+  min-height: 64px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 24px !important;
+}
+
+.toolbarSpacer {
+  min-height: 64px;
+}
+
+/* New styles */
+.headerControls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-left: auto;
+}
+
+.searchContainer {
+  position: relative;
+  width: 240px;
+  transition: all 0.3s ease;
+}
+
+.searchContainer:hover {
+  width: 280px;
+}
+
+.favoriteButton {
+  background: rgba(255, 107, 107, 0.1) !important;
+  transition: all 0.3s ease !important;
+}
+
+.favoriteButton:hover {
+  background: rgba(255, 107, 107, 0.2) !important;
+  transform: scale(1.1);
+}
+
+.favoriteButton.Mui-selected {
+  background: rgba(255, 107, 107, 0.2) !important;
+}
+
+.sidebarTitle {
+  font-weight: 700;
+  background: linear-gradient(45deg, #4a6bff 30%, #ff6b6b 90%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 1.1rem !important;
+}
