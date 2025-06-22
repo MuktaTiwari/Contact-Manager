@@ -13,22 +13,21 @@ import {
   ListItemIcon,
   ListItemText,
   Divider,
-  Avatar,
   styled,
-  keyframes
+  keyframes,
+  Switch,
+  FormControlLabel
 } from '@mui/material';
 import { 
   Menu as MenuIcon,
   Contacts as ContactsIcon,
   Favorite as FavoriteIcon,
-  Settings as SettingsIcon,
   Dashboard as DashboardIcon
 } from '@mui/icons-material';
 import SearchBar from './SearchBar';
 import styles from '../components/style/AppLayout.module.css';
 import { useContactStore } from '../stores/contactStore';
 
-const drawerWidth = 240;
 
 const fadeIn = keyframes`
   from { opacity: 0; transform: translateX(-20px); }
@@ -137,13 +136,25 @@ const AppLayout = ({ children }: { children: React.ReactNode }) => {
             <Box className={styles.searchContainer}>
               <SearchBar />
             </Box>
-            <IconButton
-              onClick={toggleShowFavoritesOnly}
-              color={showFavoritesOnly ? "error" : "default"}
-              className={`${styles.favoriteButton} ${showFavoritesOnly ? 'Mui-selected' : ''}`}
-            >
-              <FavoriteIcon />
-            </IconButton>
+            <FormControlLabel
+              control={
+                <Switch
+                  checked={showFavoritesOnly}
+                  onChange={toggleShowFavoritesOnly}
+                  color="primary"
+                  size="small"
+                />
+              }
+              label="Favorites"
+              labelPlacement="start"
+              sx={{ 
+                marginRight: 1,
+                '& .MuiTypography-root': {
+                  fontSize: '0.875rem',
+                  color: 'text.secondary'
+                }
+              }}
+            />
           </Box>
         </Toolbar>
       </AppBar>

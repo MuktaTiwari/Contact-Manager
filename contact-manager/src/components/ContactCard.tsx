@@ -1,8 +1,8 @@
-import { 
-  Card, 
-  CardContent, 
-  Typography, 
-  IconButton, 
+import {
+  Card,
+  CardContent,
+  Typography,
+  IconButton,
   CardActions,
   Avatar,
   Chip,
@@ -15,14 +15,12 @@ import {
   styled,
   keyframes
 } from '@mui/material';
-import { 
-  Favorite, 
-  FavoriteBorder, 
-  Edit, 
+import {
+  Favorite,
+  FavoriteBorder,
+  Edit,
   Delete,
-  Phone,
-  LocationOn,
-  Email
+  Visibility,
 } from '@mui/icons-material';
 import { useContactStore } from '../stores/contactStore';
 import type { Contact } from '../types/contact';
@@ -58,14 +56,29 @@ const ContactCard = ({ contact }: { contact: Contact }) => {
     });
   };
 
+  const handleViewDetails = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setSelectedContactId(contact.id);
+  };
+
   return (
     <>
       <AnimatedCard className={styles.card}>
+        {contact.favourite && (
+          <Chip
+            label="Favorite"
+            size="small"
+            color="secondary"
+            className={styles.favoriteChip}
+            sx={{ color: 'white' }}
+          />
+        )}
+
         <CardContent className={styles.cardContent}>
           <Box className={styles.contactHeader}>
-            <Avatar 
+            <Avatar
               className={styles.avatar}
-              sx={{ 
+              sx={{
                 bgcolor: contact.favourite ? 'secondary.main' : 'primary.main',
                 width: 60,
                 height: 60,
@@ -75,85 +88,45 @@ const ContactCard = ({ contact }: { contact: Contact }) => {
               {contact.name.charAt(0)}
             </Avatar>
             <Box className={styles.contactDetails}>
-              <Typography variant="h6" component="div" fontWeight="600">
+              <Typography className={styles.contactName}>
                 {contact.name}
-                {contact.favourite && (
-                  <Chip 
-                    label="Favorite" 
-                    size="small" 
-                    color="secondary" 
-                    sx={{ 
-                      ml: 1,
-                      color: 'white',
-                      fontWeight: 500,
-                    }} 
-                  />
-                )}
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                {contact.email}
               </Typography>
             </Box>
           </Box>
-          
-          <Box className={styles.detailRow}>
-            <Email fontSize="small" color="action" sx={{ mr: 1 }} />
-            <Typography variant="body2" color="text.secondary">
-              {contact.email}
-            </Typography>
-          </Box>
-          
-          <Box className={styles.detailRow}>
-            <Phone fontSize="small" color="action" sx={{ mr: 1 }} />
-            <Typography variant="body2">{contact.phone}</Typography>
-          </Box>
-          
-          <Box className={styles.detailRow}>
-            <LocationOn fontSize="small" color="action" sx={{ mr: 1 }} />
-            <Typography variant="body2" color="text.secondary">
-              {contact.address || 'No address provided'}
-            </Typography>
-          </Box>
         </CardContent>
+
         <CardActions className={styles.actions}>
           <Box className={styles.actionGroup}>
-            <IconButton 
-              onClick={() => setEditModalOpen(true)}
+            <IconButton
+              onClick={(e) => {
+                e.stopPropagation();
+                setEditModalOpen(true);
+              }}
               aria-label="edit"
               color="primary"
-              sx={{ 
-                backgroundColor: 'rgba(74, 107, 255, 0.1)',
-                '&:hover': {
-                  backgroundColor: 'rgba(74, 107, 255, 0.2)',
-                }
-              }}
+              className={styles.actionButton}
             >
               <Edit />
             </IconButton>
-            <IconButton 
-              onClick={() => setIsDeleteConfirmOpen(true)}
+            <IconButton
+              onClick={(e) => {
+                e.stopPropagation();
+                setIsDeleteConfirmOpen(true);
+              }}
               aria-label="delete"
               color="error"
-              sx={{ 
-                backgroundColor: 'rgba(255, 107, 107, 0.1)',
-                '&:hover': {
-                  backgroundColor: 'rgba(255, 107, 107, 0.2)',
-                }
-              }}
+              className={styles.actionButton}
             >
               <Delete />
             </IconButton>
           </Box>
-          <IconButton 
-            onClick={() => toggleFavorite.mutate(contact)}
-            aria-label={contact.favourite ? "remove favorite" : "add favorite"}
-            className={styles.favoriteButton}
-            sx={{ 
-              backgroundColor: contact.favourite ? 'rgba(255, 107, 107, 0.1)' : 'rgba(0,0,0,0.05)',
-              '&:hover': {
-                backgroundColor: contact.favourite ? 'rgba(255, 107, 107, 0.2)' : 'rgba(0,0,0,0.1)',
-              }
+          <IconButton
+            onClick={(e) => {
+              e.stopPropagation();
+              toggleFavorite.mutate(contact);
             }}
+            aria-label={contact.favourite ? "remove favorite" : "add favorite"}
+            className={`${styles.favoriteButton} ${styles.actionButton}`}
           >
             {contact.favourite ? (
               <Favorite color="error" />
@@ -161,9 +134,17 @@ const ContactCard = ({ contact }: { contact: Contact }) => {
               <FavoriteBorder />
             )}
           </IconButton>
+
+          <IconButton
+            onClick={handleViewDetails}
+            aria-label="view details"
+            className={styles.viewButton}
+          >
+            <Visibility />
+          </IconButton>
         </CardActions>
       </AnimatedCard>
-      
+
       <Dialog
         open={isDeleteConfirmOpen}
         onClose={() => setIsDeleteConfirmOpen(false)}
@@ -182,7 +163,7 @@ const ContactCard = ({ contact }: { contact: Contact }) => {
           </Typography>
         </DialogContent>
         <DialogActions>
-          <Button 
+          <Button
             onClick={() => setIsDeleteConfirmOpen(false)}
             color="primary"
             variant="outlined"
@@ -190,7 +171,7 @@ const ContactCard = ({ contact }: { contact: Contact }) => {
           >
             Cancel
           </Button>
-          <Button 
+          <Button
             onClick={handleDelete}
             color="error"
             variant="contained"
@@ -202,9 +183,9 @@ const ContactCard = ({ contact }: { contact: Contact }) => {
         </DialogActions>
       </Dialog>
 
-      <ContactModal 
-        open={isEditModalOpen} 
-        onClose={() => setEditModalOpen(false)} 
+      <ContactModal
+        open={isEditModalOpen}
+        onClose={() => setEditModalOpen(false)}
         contact={contact}
         mode="edit"
       />
