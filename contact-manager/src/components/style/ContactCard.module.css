@@ -3,16 +3,19 @@
   width: 350px;
   display: flex;
   flex-direction: column;
-  border-radius: 12px;
+  border-radius: 15px;
   overflow: hidden;
   cursor: pointer;
   position: relative;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
+  transition: transform 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
 }
 
 .card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-8px) rotate(1deg);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(135deg, #d0e2ff 0%, #a3c9ff 100%);
 }
 
 .cardContent {
@@ -24,16 +27,32 @@
 
 .contactHeader {
   display: flex;
-  align-items: flex-start;
-  gap: 16px;
-  margin-bottom: 16px;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 20px;
   position: relative;
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 .avatar {
-  width: 30px;
-  height:30px;
+  width: 60px;
+  height: 60px;
   flex-shrink: 0;
+  font-size: 1.8rem;
+  background: radial-gradient(circle, #6b48ff, #a12eff);
+  color: white;
+  box-shadow: 0 4px 15px rgba(107, 72, 255, 0.4);
+  border: 3px solid #ffffff;
+  transition: transform 0.3s ease;
+}
+
+.card:hover .avatar {
+  transform: rotate(360deg);
 }
 
 .contactDetails {
@@ -43,67 +62,94 @@
 }
 
 .contactName {
-  font-weight: 600;
+  font-weight: 700;
   margin: 0;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  font-size: 1.1rem;
-  color: #333;
+  font-size: 1.3rem;
+  color: #2c3e50;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+  animation: bounceIn 0.5s ease-out;
+}
+
+@keyframes bounceIn {
+  0% { transform: scale(0.9); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
 }
 
 .actions {
   display: flex;
   justify-content: space-between;
-  padding: 12px 16px !important;
-  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  padding: 15px 20px !important;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.95);
   margin-top: auto;
+  transition: background 0.3s ease;
+}
+
+.card:hover .actions {
+  background: rgba(255, 255, 255, 0.7);
 }
 
 .actionGroup {
   display: flex;
-  gap: 8px;
+  gap: 12px;
 }
 
 .actionButton {
-  transition: all 0.2s ease;
+  color: #4a6aff;
+  transition: transform 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+  padding: 8px;
+  border-radius: 50%;
+  background: rgba(74, 106, 255, 0.15);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .actionButton:hover {
-  transform: scale(1.1);
+  transform: scale(1.3) rotate(15deg);
+  color: #6b48ff;
+  background: rgba(107, 72, 255, 0.25);
+  box-shadow: 0 4px 10px rgba(107, 72, 255, 0.3);
 }
 
 .favoriteButton {
   margin-left: auto;
+  color: #ff6b6b;
+  padding: 8px;
+  border-radius: 50%;
+  background: rgba(255, 107, 107, 0.15);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.favoriteButton:hover {
+  transform: scale(1.3) rotate(-15deg);
+  color: #ff8787;
+  background: rgba(255, 135, 135, 0.25);
+  box-shadow: 0 4px 10px rgba(255, 107, 107, 0.3);
 }
 
 .viewButton {
   margin: 0 16px 16px 16px;
   text-transform: none;
   border-radius: 8px;
-  padding: 8px 0;
-  font-weight: 500;
-  transition: all 0.2s ease;
+  padding: 8px 16px;
+  font-weight: 600;
+  background: linear-gradient(45deg, #e1e4f0, #6851cf);
+  color: white;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 3px 10px rgba(74, 106, 255, 0.3);
 }
 
 .viewButton:hover {
-  background-color: rgba(74, 107, 255, 0.08);
+  background: linear-gradient(45deg, #6b48ff, #a12eff);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(107, 72, 255, 0.4);
 }
-
-.viewActions {
-  display: flex;
-  gap: 4px;
-  align-items: center;
-}
-/* Update your existing .actions class */
-.actions {
-  display: flex;
-  justify-content: space-between;
-  padding: 12px 16px !important;
-  border-top: 1px solid rgba(0, 0, 0, 0.08);
-  margin-top: auto;
-}
-
 
 .favoriteChip {
   position: absolute;
@@ -111,6 +157,15 @@
   right: 16px;
   z-index: 1;
   color: white !important;
-  font-weight: 500;
-  background-color: #ff4081 !important;
+  font-weight: 600;
+  background: linear-gradient(45deg, #ff6b6b, #ff8787) !important;
+  border-radius: 10px;
+  padding: 2px 10px;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
 }
