@@ -1,49 +1,116 @@
 .card {
-  height: 100%;
+  height: 240px;
+  width: 350px;
   display: flex;
   flex-direction: column;
   border-radius: 12px;
   overflow: hidden;
+  cursor: pointer;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
 }
 
 .cardContent {
   flex-grow: 1;
   padding: 20px !important;
-}
-
-.contactHeader {
-  display: flex;
-  align-items: center;
-  margin-bottom: 16px;
-}
-
-.avatar {
-  margin-right: 16px;
-}
-
-.contactDetails {
   display: flex;
   flex-direction: column;
 }
 
-.detailRow {
+.contactHeader {
   display: flex;
-  align-items: center;
-  margin-bottom: 12px;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 16px;
+  position: relative;
+}
+
+.avatar {
+  width: 30px;
+  height:30px;
+  flex-shrink: 0;
+}
+
+.contactDetails {
+  flex-grow: 1;
+  min-width: 0;
+  padding-right: 40px;
+}
+
+.contactName {
+  font-weight: 600;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 1.1rem;
+  color: #333;
 }
 
 .actions {
   display: flex;
   justify-content: space-between;
-  padding: 8px 16px !important;
+  padding: 12px 16px !important;
   border-top: 1px solid rgba(0, 0, 0, 0.08);
+  margin-top: auto;
 }
 
 .actionGroup {
   display: flex;
-  gap: 4px;
+  gap: 8px;
+}
+
+.actionButton {
+  transition: all 0.2s ease;
+}
+
+.actionButton:hover {
+  transform: scale(1.1);
 }
 
 .favoriteButton {
   margin-left: auto;
+}
+
+.viewButton {
+  margin: 0 16px 16px 16px;
+  text-transform: none;
+  border-radius: 8px;
+  padding: 8px 0;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.viewButton:hover {
+  background-color: rgba(74, 107, 255, 0.08);
+}
+
+.viewActions {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+/* Update your existing .actions class */
+.actions {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 16px !important;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  margin-top: auto;
+}
+
+
+.favoriteChip {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 1;
+  color: white !important;
+  font-weight: 500;
+  background-color: #ff4081 !important;
 }

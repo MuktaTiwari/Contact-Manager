@@ -9,7 +9,6 @@ import {
   InputAdornment,
   Alert,
   Box,
-  IconButton
 } from '@mui/material';
 import { 
   Person, 
@@ -17,7 +16,6 @@ import {
   Phone, 
   LocationOn,
   Favorite,
-  Close
 } from '@mui/icons-material';
 import type { ContactFormValues } from '../types/contact';
 import { useCreateContact, useUpdateContact } from '../api/contacts';
@@ -33,7 +31,6 @@ interface ContactFormProps {
 const ContactForm = ({ 
   defaultValues, 
   onSuccess,
-  onClose,
   mode = 'create'
 }: ContactFormProps) => {
   const { 

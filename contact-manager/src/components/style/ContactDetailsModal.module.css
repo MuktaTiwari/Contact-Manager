@@ -1,0 +1,76 @@
+.modal {
+  border-radius: 12px;
+}
+
+.header {
+  padding: 20px 24px;
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.titleContainer {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  position: relative;
+}
+
+.avatar {
+  width: 60px;
+  height: 60px;
+  font-size: 1.5rem;
+}
+
+.titleText {
+  flex-grow: 1;
+}
+
+.favoriteChip {
+  margin-left: 8px;
+  color: white;
+  font-weight: 500;
+}
+
+.closeButton {
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: #6c757d;
+}
+
+.content {
+  padding: 24px !important;
+}
+
+.detailItem {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 20px;
+  align-items: flex-start;
+}
+
+.icon {
+  color: #4a6bff;
+  margin-top: 4px;
+  flex-shrink: 0;
+}
+
+.detailText {
+  flex-grow: 1;
+}
+
+.divider {
+  margin: 16px 0;
+  background-color: #e9ecef;
+}
+
+.actions {
+  padding: 16px 24px;
+  border-top: 1px solid #e9ecef;
+}
+
+.favoriteButton {
+  border-radius: 8px;
+  text-transform: none;
+  margin-left: auto;
+}

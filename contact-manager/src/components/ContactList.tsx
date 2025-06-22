@@ -1,6 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
 import { 
-  CircularProgress, 
   Pagination, 
   Typography,
   Box,
@@ -15,9 +14,10 @@ import { useState } from 'react';
 import ContactModal from './ContactModal';
 import type { Contact } from '../types/contact';
 import styles from '../components/style/ContactList.module.css';
+import ContactDetailsModal from './ContactDetailsModal';
 
 const ContactList = () => {
-  const { searchQuery, showFavoritesOnly } = useContactStore();
+  const { searchQuery, showFavoritesOnly, selectedContactId } = useContactStore();
   const [isAddModalOpen, setAddModalOpen] = useState(false);
   const [page, setPage] = useState(1);
 
@@ -32,6 +32,7 @@ const ContactList = () => {
 
   const contacts = data?.data || [];
   const totalPages = data?.totalPages || 1;
+  const selectedContact = contacts.find(c => c.id === selectedContactId) || null;
 
   if (error) return (
     <Typography className={styles.errorText}>
@@ -44,9 +45,9 @@ const ContactList = () => {
       position: 'relative',
       width: '100%',
       maxWidth: '100vw',
-      overflow: 'hidden', // Disable scrolling
-      minHeight: 'calc(100vh - 64px)', // Subtract header height
-      paddingBottom: '80px' // Make space for fixed pagination
+      overflow: 'hidden',
+      minHeight: 'calc(100vh - 64px)',
+      paddingBottom: '80px'
     }}>
       {isLoading ? (
         <Box className={styles.gridContainer}>
@@ -66,7 +67,7 @@ const ContactList = () => {
           flexDirection: 'column', 
           alignItems: 'center', 
           justifyContent: 'center', 
-          height: 'calc(100vh - 144px)', // Adjusted for header and pagination
+          height: 'calc(100vh - 144px)',
           textAlign: 'center',
           p: 3
         }}>
@@ -85,7 +86,6 @@ const ContactList = () => {
         </Box>
       )}
 
-      {/* Fixed Pagination */}
       {totalPages > 1 && (
         <Box className={styles.fixedPagination}>
           <Pagination
@@ -106,7 +106,7 @@ const ContactList = () => {
         onClick={() => setAddModalOpen(true)}
         sx={{
           position: 'fixed',
-          bottom: 80, // Adjusted to appear above pagination
+          bottom: 80,
           right: 32,
           width: 56,
           height: 56,
@@ -117,7 +117,7 @@ const ContactList = () => {
             transform: 'scale(1.1)',
           },
           transition: 'all 0.2s ease',
-          zIndex: 1001 // Above pagination
+          zIndex: 1001
         }}
       >
         <Add />
@@ -128,6 +128,8 @@ const ContactList = () => {
         onClose={() => setAddModalOpen(false)}
         mode="create"
       />
+
+      <ContactDetailsModal contact={selectedContact} />
     </Box>
   );
 };
