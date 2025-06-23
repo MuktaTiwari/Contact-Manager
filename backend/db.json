@@ -14,7 +14,7 @@
       "email": "pooja@gmail.com",
       "phone": "2345678901",
       "address": "456 Oak Ave",
-      "favourite": false
+      "favourite": true
     },
     {
       "id": 3,
@@ -57,14 +57,6 @@
       "id": 8
     },
     {
-      "name": "rieueufher",
-      "email": "iuiuhfr@gmail.com",
-      "phone": "9879879879",
-      "address": "wegfew",
-      "favourite": true,
-      "id": 9
-    },
-    {
       "name": "kenef",
       "email": "jsdgf@gmail.com",
       "phone": "7879890987",
@@ -103,6 +95,14 @@
       "address": "adha",
       "favourite": false,
       "id": 14
+    },
+    {
+      "name": "ijdfie",
+      "email": "hbfeu@gmail.com",
+      "phone": "8787897899",
+      "address": "jdh",
+      "favourite": true,
+      "id": 15
     }
   ]
 }

@@ -1,5 +1,4 @@
 import { create } from 'zustand';
-import type { Contact } from '../types/contact';
 
 interface ContactStoreState {
   searchQuery: string;
