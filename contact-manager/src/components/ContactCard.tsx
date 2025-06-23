@@ -16,11 +16,11 @@ import {
   keyframes
 } from '@mui/material';
 import {
-  Favorite,
-  FavoriteBorder,
   Edit,
   Delete,
   Visibility,
+  BookmarkBorder,
+  Bookmark,
 } from '@mui/icons-material';
 import { useContactStore } from '../stores/contactStore';
 import type { Contact } from '../types/contact';
@@ -114,7 +114,6 @@ const ContactCard = ({ contact }: { contact: Contact }) => {
                 setIsDeleteConfirmOpen(true);
               }}
               aria-label="delete"
-              color="error"
               className={styles.actionButton}
             >
               <Delete />
@@ -129,9 +128,9 @@ const ContactCard = ({ contact }: { contact: Contact }) => {
             className={`${styles.favoriteButton} ${styles.actionButton}`}
           >
             {contact.favourite ? (
-              <Favorite color="error" />
+              <Bookmark />
             ) : (
-              <FavoriteBorder />
+              <BookmarkBorder />
             )}
           </IconButton>
 

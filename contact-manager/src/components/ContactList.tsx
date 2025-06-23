@@ -92,7 +92,6 @@ const ContactList = () => {
             count={totalPages}
             page={page}
             onChange={handlePageChange}
-            color="primary"
             shape="rounded"
             size="large"
             disabled={isFetching}

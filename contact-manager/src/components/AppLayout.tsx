@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
-import { 
-  Box, 
-  CssBaseline, 
-  AppBar, 
-  Toolbar, 
-  Typography, 
+import {
+  Box,
+  CssBaseline,
+  AppBar,
+  Toolbar,
+  Typography,
   IconButton,
   Drawer,
   List,
@@ -18,7 +18,7 @@ import {
   Switch,
   FormControlLabel
 } from '@mui/material';
-import { 
+import {
   Menu as MenuIcon,
   Contacts as ContactsIcon,
   Favorite as FavoriteIcon,
@@ -147,7 +147,7 @@ const AppLayout = ({ children }: { children: React.ReactNode }) => {
               }
               label="Favorites"
               labelPlacement="start"
-              sx={{ 
+              sx={{
                 marginRight: 1,
                 '& .MuiTypography-root': {
                   fontSize: '0.875rem',
@@ -158,7 +158,7 @@ const AppLayout = ({ children }: { children: React.ReactNode }) => {
           </Box>
         </Toolbar>
       </AppBar>
-      
+
       <Box
         component="nav"
         className={styles.navContainer}
@@ -186,7 +186,7 @@ const AppLayout = ({ children }: { children: React.ReactNode }) => {
           {drawer}
         </Drawer>
       </Box>
-      
+
       <Box
         component="main"
         className={styles.mainContent}

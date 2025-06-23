@@ -1,14 +1,6 @@
 {
   "contacts": [
     {
-      "id": 1,
-      "name": "Manimukta Tiwari",
-      "email": "mukta203@gmail.com",
-      "phone": "8890567898",
-      "address": "123 Main St",
-      "favourite": true
-    },
-    {
       "id": 2,
       "name": "Pooja Tiwari",
       "email": "pooja@gmail.com",
@@ -45,7 +37,7 @@
       "email": "ksjdfh@gmail.com",
       "phone": "8979878789",
       "address": "uiyhy",
-      "favourite": true,
+      "favourite": false,
       "id": 7
     },
     {
@@ -69,7 +61,7 @@
       "email": "dbasdih@gmail.com",
       "phone": "9897987983",
       "address": "asda",
-      "favourite": false,
+      "favourite": true,
       "id": 11
     },
     {
